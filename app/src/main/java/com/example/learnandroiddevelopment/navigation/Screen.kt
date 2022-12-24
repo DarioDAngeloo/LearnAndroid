@@ -9,6 +9,6 @@ sealed class Screen(val route: String) {
             return "details_screen/$kotlinCardId"
         }
     }
-    object Search : Screen ("search_screenn")
+    object Search : Screen ("search_screen")
 
 }
