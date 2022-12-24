@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             LearnAndroidDevelopmentTheme {
                 navHostController = rememberNavController()
-                SetupNavGraph(navHostController)
+                SetupNavGraph(navHostController = navHostController)
             }
         }
     }
