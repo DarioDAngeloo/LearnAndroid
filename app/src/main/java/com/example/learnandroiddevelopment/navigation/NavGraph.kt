@@ -6,6 +6,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.example.learnandroiddevelopment.presentation.screens.onboarding.Onboarding
 import com.example.learnandroiddevelopment.presentation.screens.splash.SplashScreen
 import com.example.learnandroiddevelopment.util.Constants.KOTLIN_ARGUMENT_KEY
 
@@ -17,7 +18,7 @@ fun SetupNavGraph(navHostController: NavHostController) {
             SplashScreen(navHostController = navHostController)
         }
         composable(route = Screen.OnBoarding.route) {
-
+            Onboarding(navHostController = navHostController)
         }
         composable(route = Screen.Home.route) {
 
