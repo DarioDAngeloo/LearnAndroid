@@ -7,10 +7,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
@@ -24,6 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.learnandroid.R
 import com.example.learnandroiddevelopment.navigation.Screen
@@ -31,11 +31,16 @@ import com.example.learnandroiddevelopment.ui.theme.*
 import kotlinx.coroutines.delay
 
 @Composable
-fun SplashScreen(navHostController: NavHostController) {
+fun SplashScreen(
+    navHostController: NavHostController,
+    splashViewModel: SplashViewModel = hiltViewModel()
+) {
 
     val scale = remember {
         Animatable(0.7f)
     }
+
+    val onBoardingCompleted by splashViewModel.onBoardingCompleted.collectAsState()
 
     LaunchedEffect(key1 = true) {
         scale.animateTo(
@@ -47,8 +52,14 @@ fun SplashScreen(navHostController: NavHostController) {
                 }
             )
         )
-        delay(1000)
-        navHostController.navigate(Screen.OnBoarding.route)
+        if (onBoardingCompleted) {
+            navHostController.navigate(Screen.Home.route)
+        } else{
+            navHostController.navigate(Screen.OnBoarding.route)
+
+        }
+
+
     }
 
 
@@ -84,7 +95,7 @@ fun SplashComponent(scale: Float) {
                 text = "from",
                 fontSize = 19.sp,
                 fontWeight = FontWeight.Light,
-                color = TextSplash2,
+                color = TitleOnBoardingNight,
                 fontFamily = Poppins
             )
             Text(
@@ -92,7 +103,7 @@ fun SplashComponent(scale: Float) {
                 fontSize = 22.sp,
                 fontWeight = FontWeight.SemiBold,
                 fontFamily = Poppins,
-                color = TextSplash1
+                color = MaterialTheme.colors.textsOfSplashScreen
             )
         }
     }
