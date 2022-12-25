@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">LearnAndroidDevelopment</string>
     <string name="splash_app_logo">App_logo</string>
+    <string name="on_boarding_image">on_boarding_image</string>
 </resources>

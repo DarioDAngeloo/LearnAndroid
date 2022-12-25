@@ -16,12 +16,11 @@ import com.example.learnandroiddevelopment.navigation.SetupNavGraph
 import com.example.learnandroiddevelopment.ui.theme.LearnAndroidDevelopmentTheme
 import com.example.learnandroiddevelopment.ui.theme.SplashDark
 import com.example.learnandroiddevelopment.ui.theme.SplashLight
+import com.google.accompanist.pager.ExperimentalPagerApi
 import dagger.hilt.android.AndroidEntryPoint
-
+@ExperimentalPagerApi
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,12 +28,10 @@ class MainActivity : ComponentActivity() {
         setContent {
 
             LearnAndroidDevelopmentTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(), color = SplashDark
-                ) {
 
-                    SetupNavGraph()
-                }
+
+                SetupNavGraph()
+
 
             }
         }

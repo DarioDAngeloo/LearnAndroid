@@ -6,4 +6,6 @@ object Constants {
  const val KOTLIN_REMOTE_KEY_DATABASE = "kotlin_remote_key_table"
 
  const val KOTLIN_DATABASE = "kotlin_database"
+
+ const val ON_BOARDING_PAGES = 3
 }
